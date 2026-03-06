@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BALA – Premium Clothing Brand. Shop our curated collections of men's, women's, and accessories with timeless sophistication." />
+  <title>BALA – Premium Clothing Brand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== LOADER ===================== -->
+  <div class="loader" id="loader">
+    <div class="loader-logo">BALA</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <!-- ===================== CART SIDEBAR ===================== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Bag <span class="cart-count-badge" id="cartBadgeSidebar">0</span></h3>
+      <button class="cart-close" id="cartClose" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 8h4l6 30h28l6-22H18"/>
+          <circle cx="26" cy="52" r="3"/>
+          <circle cx="42" cy="52" r="3"/>
+        </svg>
+        <p>Your bag is empty</p>
+        <span>Start exploring our collections</span>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span class="cart-total-price" id="cartTotalPrice">$0.00</span>
+      </div>
+      <button class="btn-checkout">Proceed to Checkout</button>
+      <p class="cart-note">Free shipping on orders over $150</p>
+    </div>
+  </aside>
+
+  <!-- ===================== QUICK VIEW MODAL ===================== -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="quick-view-modal" id="quickViewModal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-content">
+      <div class="modal-img-wrap">
+        <div class="modal-img-bg" id="modalImgBg"></div>
+      </div>
+      <div class="modal-details">
+        <span class="modal-tag" id="modalTag"></span>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <p class="modal-price" id="modalPrice"></p>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="size-selector">
+          <p>Select Size</p>
+          <div class="sizes" id="modalSizes"></div>
+        </div>
+        <button class="btn-add-modal" id="modalAddBtn">Add to Bag</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="#home" class="brand-logo">BALA</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#collections">Collections</a>
+        <a href="#products">Shop</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="nav-icon" id="searchToggle" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <button class="nav-icon cart-btn" id="cartToggle" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+    <!-- Search Bar -->
+    <div class="search-bar" id="searchBar">
+      <input type="text" placeholder="Search for styles, collections..." id="searchInput" />
+      <button class="search-close" id="searchClose">✕</button>
+    </div>
+  </header>
+
+  <!-- ===================== MOBILE NAV ===================== -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <nav class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+    <div class="mobile-nav-logo">BALA</div>
+    <a href="#home" class="mobile-nav-link" data-close>Home</a>
+    <a href="#collections" class="mobile-nav-link" data-close>Collections</a>
+    <a href="#products" class="mobile-nav-link" data-close>Shop</a>
+    <a href="#about" class="mobile-nav-link" data-close>About</a>
+    <a href="#contact" class="mobile-nav-link" data-close>Contact</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="#" class="mobile-nav-link">Size Guide</a>
+    <a href="#" class="mobile-nav-link">Shipping Info</a>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-particles" id="heroParticles"></div>
+      <!-- Decorative floating elements -->
+      <div class="float-el float-el-1"></div>
+      <div class="float-el float-el-2"></div>
+      <div class="float-el float-el-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag">New Collection 2026</div>
+      <h1 class="hero-title">
+        <span class="hero-t1">Wear Your</span>
+        <span class="hero-t2">Story</span>
+      </h1>
+      <p class="hero-subtitle">Timeless pieces crafted for the modern soul.<br>Where artistry meets everyday elegance.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn-primary">Explore Collection</a>
+        <a href="#about" class="btn-ghost">Our Story</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">12K+</span><span class="stat-label">Customers</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">5⭐</span><span class="stat-label">Rated</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Styles</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ===================== MARQUEE ===================== -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-inner">
+        <span>Premium Quality</span><span class="dot">✦</span>
+        <span>Sustainable Fashion</span><span class="dot">✦</span>
+        <span>Handcrafted Details</span><span class="dot">✦</span>
+        <span>Timeless Design</span><span class="dot">✦</span>
+        <span>Curated Collections</span><span class="dot">✦</span>
+        <span>Premium Quality</span><span class="dot">✦</span>
+        <span>Sustainable Fashion</span><span class="dot">✦</span>
+        <span>Handcrafted Details</span><span class="dot">✦</span>
+        <span>Timeless Design</span><span class="dot">✦</span>
+        <span>Curated Collections</span><span class="dot">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== COLLECTIONS ===================== -->
+  <section class="collections-section" id="collections">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Curated For You</span>
+        <h2 class="section-title">Our Collections</h2>
+        <p class="section-sub">Discover styles that speak to every moment of your life</p>
+      </div>
+      <div class="collections-grid">
+        <div class="coll-card coll-men" data-aos>
+          <div class="coll-bg"></div>
+          <div class="coll-overlay"></div>
+          <div class="coll-content">
+            <span class="coll-label">MEN</span>
+            <h3>Modern Gentleman</h3>
+            <p>Sharp cuts. Refined textures.</p>
+            <a href="#products" class="coll-link" data-filter="men">Shop Now →</a>
+          </div>
+        </div>
+        <div class="coll-card coll-women" data-aos>
+          <div class="coll-bg"></div>
+          <div class="coll-overlay"></div>
+          <div class="coll-content">
+            <span class="coll-label">WOMEN</span>
+            <h3>Effortless Grace</h3>
+            <p>Fluid silhouettes. Bold spirit.</p>
+            <a href="#products" class="coll-link" data-filter="women">Shop Now →</a>
+          </div>
+        </div>
+        <div class="coll-card coll-access" data-aos>
+          <div class="coll-bg"></div>
+          <div class="coll-overlay"></div>
+          <div class="coll-content">
+            <span class="coll-label">ACCESSORIES</span>
+            <h3>The Finishing Touch</h3>
+            <p>Details that define elegance.</p>
+            <a href="#products" class="coll-link" data-filter="accessories">Shop Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRODUCTS ===================== -->
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Latest Arrivals</span>
+        <h2 class="section-title">Shop All Styles</h2>
+      </div>
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="men">Men</button>
+        <button class="filter-btn" data-category="women">Women</button>
+        <button class="filter-btn" data-category="accessories">Accessories</button>
+        <button class="filter-btn" data-category="new">New In</button>
+      </div>
+      <!-- Product Grid -->
+      <div class="products-grid" id="productsGrid"></div>
+      <div class="load-more-wrap">
+        <button class="btn-load-more" id="loadMoreBtn">Load More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROMO BANNER ===================== -->
+  <section class="promo-banner">
+    <div class="promo-grid">
+      <div class="promo-main">
+        <div class="promo-bg promo-bg-1"></div>
+        <div class="promo-content">
+          <span class="promo-tag">Limited Edition</span>
+          <h3>The Onyx Series</h3>
+          <p>Masterfully crafted in deep charcoal and jet black. Exclusive to BALA.</p>
+          <a href="#products" class="btn-primary-sm">Discover →</a>
+        </div>
+      </div>
+      <div class="promo-side">
+        <div class="promo-sm promo-sm-1">
+          <div class="promo-bg promo-bg-2"></div>
+          <div class="promo-content">
+            <span class="promo-tag">Bestseller</span>
+            <h4>Classic Linen Edit</h4>
+            <a href="#products" class="btn-ghost-sm">Shop →</a>
+          </div>
+        </div>
+        <div class="promo-sm promo-sm-2">
+          <div class="promo-bg promo-bg-3"></div>
+          <div class="promo-content">
+            <span class="promo-tag">New In</span>
+            <h4>Silk Essentials</h4>
+            <a href="#products" class="btn-ghost-sm">Shop →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-card-main">
+            <div class="about-img-placeholder"></div>
+            <div class="about-card-badge">Est. 2018</div>
+          </div>
+          <div class="about-card-sm">
+            <div class="about-stat-circle">
+              <span class="asc-num">200+</span>
+              <span class="asc-label">Designs</span>
+            </div>
+          </div>
+          <div class="about-floating-tag">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"/></svg>
+            Sustainably Made
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-tag">Our Story</span>
+          <h2 class="section-title">Crafted With Intention, Worn With Pride</h2>
+          <p>BALA was born from a simple belief — that clothing should be more than fabric. It should be a statement of identity, a canvas of personality, and a commitment to quality that endures.</p>
+          <p>Founded in 2018, every piece in our collection is thoughtfully designed with sustainably sourced materials and artisanal craftsmanship. We believe fashion can be both beautiful and responsible.</p>
+          <div class="about-pillars">
+            <div class="pillar">
+              <div class="pillar-icon">🌿</div>
+              <div>
+                <h4>Sustainable</h4>
+                <p>Eco-certified materials &amp; ethical production</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">✂️</div>
+              <div>
+                <h4>Handcrafted</h4>
+                <p>Artisanal tailoring with precision cuts</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">♾️</div>
+              <div>
+                <h4>Timeless</h4>
+                <p>Beyond trends, built to last generations</p>
+              </div>
+            </div>
+          </div>
+          <a href="#collections" class="btn-primary">Explore Our World</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What Our Customers Say</span>
+        <h2 class="section-title">Loved by Thousands</h2>
+      </div>
+      <div class="testimonials-slider" id="testimonialSlider">
+        <div class="testimonials-track" id="testimonialTrack">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p>"BALA changed how I think about fashion. Every piece feels like it was made just for me — perfect fit, incredible quality. I've never received so many compliments."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">SA</div>
+              <div><strong>Sofia A.</strong><span>Mumbai, India</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p>"The craftsmanship is exceptional. I ordered the Onyx Blazer and honestly it's the most premium piece of clothing I've ever owned. Will be a lifetime customer."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">RK</div>
+              <div><strong>Rahul K.</strong><span>Delhi, India</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p>"Finally a brand that understands minimalism done right. The Silk Essentials collection is breathtaking. Sustainable and stylish — BALA gets it."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">PM</div>
+              <div><strong>Priya M.</strong><span>Bengaluru, India</span></div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p>"The attention to detail is unmatched. From the packaging to the stitching — every touchpoint screams luxury. BALA is in a league of its own."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">AV</div>
+              <div><strong>Arjun V.</strong><span>Chennai, India</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-controls">
+        <button class="testi-prev" id="testiPrev">←</button>
+        <div class="testi-dots" id="testiDots"></div>
+        <button class="testi-next" id="testiNext">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER ===================== -->
+  <section class="newsletter-section" id="contact">
+    <div class="newsletter-inner">
+      <div class="nl-decoration nl-d1"></div>
+      <div class="nl-decoration nl-d2"></div>
+      <div class="nl-content">
+        <span class="section-tag">Stay Connected</span>
+        <h2>Be First to Know</h2>
+        <p>Join the BALA community. Get exclusive access to new drops, private sales, and style inspiration curated just for you.</p>
+        <form class="nl-form" id="nlForm">
+          <div class="nl-input-wrap">
+            <input type="email" placeholder="Enter your email address" id="nlEmail" required />
+            <button type="submit" class="nl-btn">Subscribe</button>
+          </div>
+        </form>
+        <p class="nl-privacy">No spam, ever. Unsubscribe anytime.</p>
+        <div class="nl-success" id="nlSuccess">
+          <span>✓</span> Welcome to BALA! Check your inbox for a special offer.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">BALA</div>
+          <p>Premium clothing crafted with intention. Worn with pride. Designed for the discerning modern individual.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram" class="social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" aria-label="Pinterest" class="social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter/X" class="social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="#">Men's Collection</a>
+          <a href="#">Women's Collection</a>
+          <a href="#">Accessories</a>
+          <a href="#">New Arrivals</a>
+          <a href="#">Sale</a>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <a href="#">Size Guide</a>
+          <a href="#">Shipping &amp; Returns</a>
+          <a href="#">Order Tracking</a>
+          <a href="#">Care Instructions</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#about">Our Story</a>
+          <a href="#">Sustainability</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+          <a href="#">Affiliates</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 BALA. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
